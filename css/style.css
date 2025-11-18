@@ -1,0 +1,418 @@
+/* ======================================= */
+/* 1. VARIÁVEIS DE DESIGN (System Design) */
+/* ======================================= */
+:root {
+  /* CORES PRINCIPAIS (Baseado na referência) */
+  --cor-primaria-titulo: #507dbc; /* Azul Claro/Médio */
+  --cor-secundaria-acao: #ff69b4; /* Rosa Vibrante */
+  --cor-acento-verde: #90ee90; /* Verde Limão */
+  --cor-acento-cinza: #e8e8e8; /* Cinza Claro (Fundo das seções) */
+
+  /* CORES DE TEXTO E FUNDO */
+  --cor-fundo-geral: #ffffff; /* Fundo branco principal */
+  --cor-texto-principal: #333333; /* Texto escuro para boa legibilidade */
+  --cor-texto-claro: #ffffff; /* Texto branco para botões */
+
+  /* TIPOGRAFIA */
+  --fonte-titulo: "Arial Black", sans-serif;
+  --fonte-corpo: "Arial", sans-serif;
+
+  font-size: 16px;
+}
+
+/* ======================================= */
+/* 2. RESET E ESTILO BASE (Mobile-First) */
+/* ======================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  background-color: var(--cor-fundo-geral);
+  color: var(--cor-texto-principal);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Títulos */
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  color: var(--cor-primaria-titulo);
+  font-size: 2.2rem; /* Tamanho para mobile */
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--cor-primaria-titulo);
+  transition: all 0.3s ease; /* ATUALIZADO: Transição suave para todos os links */
+}
+
+/* EFEITO HOVER: Links Gerais */
+a:hover {
+  color: var(--cor-secundaria-acao); /* Muda para rosa no hover */
+}
+
+/* Imagens Responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estrutura Global (Container) */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem; /* Respiro nas laterais */
+}
+
+/* ======================================= */
+/* 3. LAYOUT MOBILE (HEADER, NAV, SESSIONS) */
+/* ======================================= */
+
+/* Header */
+header {
+  background-color: var(--cor-fundo-geral);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--cor-acento-cinza);
+}
+
+/* CORREÇÃO DA LOGO (PNG/IMG) */
+.logo-link img {
+  height: 50px; /* Define a altura máxima do logo */
+  width: auto; /* Mantém a proporção de largura */
+  display: block;
+  margin: 0 auto; /* Centraliza o logo em mobile */
+  transition: transform 0.3s ease; /* ADICIONADO: Transição na logo */
+}
+
+/* EFEITO HOVER: Logo */
+.logo-link:hover img {
+  transform: scale(1.05); /* Leve aumento no hover */
+}
+
+/* Nav */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* Links empilhados no mobile */
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0.5rem 0;
+  color: var(--cor-texto-principal);
+  font-weight: 600;
+  transition: all 0.3s ease; /* ADICIONADO: Transição nos links do menu */
+}
+
+/* EFEITO HOVER: Links do Menu (Mobile) */
+nav ul li a:hover {
+  color: var(--cor-secundaria-acao); /* Muda para rosa */
+  transform: translateX(5px); /* Leve deslocamento */
+}
+
+/* Botão de Cadastro (Mobile) */
+.signup-button {
+  border: 1px solid var(--cor-texto-principal);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: all 0.3s ease; /* ADICIONADO: Transição no botão */
+}
+
+/* EFEITO HOVER: Botão de Cadastro */
+.signup-button:hover {
+  background-color: var(--cor-secundaria-acao);
+  color: var(
+    --cor-texto-claro
+  ) !important; /* !important para garantir sobreposição */
+  border-color: var(--cor-secundaria-acao);
+}
+
+/* Seções */
+section {
+  padding: 2rem 0;
+}
+
+/* Seção principal (Hero) - Estilo Mobile */
+#missao {
+  background-color: var(--cor-acento-cinza);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  text-align: center; /* Centralizado no mobile */
+}
+
+#missao p {
+  margin-top: 1rem;
+  padding: 0 10%; /* Recuo lateral no mobile */
+}
+
+/* ======================================= */
+/* 4. ESTILIZAÇÃO DE PROJETOS (CARDS) */
+/* ======================================= */
+.projetos-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Espaçamento entre os cards */
+  padding-top: 2rem;
+}
+
+.projeto-card {
+  background-color: var(--cor-fundo-geral);
+  border: 1px solid var(--cor-acento-cinza);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease; /* ADICIONADO: Transição no card */
+}
+
+/* EFEITO HOVER: Card de Projeto */
+.projeto-card:hover {
+  transform: translateY(-5px); /* Eleva o card */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra mais forte */
+}
+
+.projeto-card figure img,
+.projeto-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 0;
+}
+
+.projeto-card h3 {
+  color: var(--cor-primaria-titulo);
+  padding: 1rem 1rem 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+
+.projeto-card p {
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Garante que o texto preencha o espaço (para alinhar botões) */
+}
+
+/* Estilo do botão de detalhes dentro do card */
+.btn-detalhes {
+  display: block;
+  text-align: center;
+  background-color: var(--cor-secundaria-acao);
+  color: var(--cor-texto-claro) !important;
+  padding: 15px;
+  margin-top: auto; /* EMPURRA O BOTÃO PARA BAIXO (ALINHAMENTO) */
+  font-weight: 600;
+  transition: background-color 0.3s;
+  border-radius: 0 0 8px 8px;
+}
+
+.btn-detalhes:hover {
+  background-color: #e05b9b;
+}
+
+/* ======================================= */
+/* 5. FORMULÁRIO (cadastro.html) */
+/* ======================================= */
+#formulario-cadastro {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid var(--cor-acento-cinza);
+  border-radius: 8px;
+}
+
+fieldset {
+  border: none;
+  padding: 1.5rem 0;
+  margin-bottom: 1.5rem;
+  border-top: 1px dashed var(--cor-acento-cinza);
+}
+
+legend {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--cor-primaria-titulo);
+  padding: 0 0.5rem;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+.form-group-inline > div {
+  width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+  padding: 0.8rem 1rem;
+  margin: 0.5rem 0 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s ease; /* ADICIONADO: Transição no input */
+}
+
+/* EFEITO DE FOCO: Inputs do Formulário */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: var(--cor-primaria-titulo);
+  box-shadow: 0 0 5px rgba(80, 125, 188, 0.5);
+  outline: none;
+}
+
+/* Botões de Ação */
+button[type="submit"],
+button[type="reset"] {
+  background-color: var(--cor-secundaria-acao);
+  color: var(--cor-texto-claro);
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  transition: all 0.3s ease; /* ATUALIZADO: Transição mais suave */
+}
+
+button[type="submit"]:hover {
+  background-color: #e05b9b;
+  transform: scale(1.03); /* Leve aumento */
+}
+
+/* ADICIONADO: Estilo e Hover para o botão Reset */
+button[type="reset"] {
+  background-color: var(--cor-texto-principal);
+}
+button[type="reset"]:hover {
+  background-color: #555;
+  transform: scale(1.03);
+}
+
+/* ======================================= */
+/* 6. RODAPÉ (FOOTER) */
+/* ======================================= */
+footer {
+  background-color: var(--cor-texto-principal);
+  color: var(--cor-fundo-geral);
+  padding: 2rem 0;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+footer a {
+  color: var(--cor-acento-verde);
+  font-weight: 600;
+  transition: color 0.3s ease; /* ADICIONADO: Transição no link do rodapé */
+}
+
+/* EFEITO HOVER: Link do Rodapé */
+footer a:hover {
+  color: var(--cor-fundo-geral); /* Muda para branco no hover */
+}
+
+/* ======================================= */
+/* 7. MEDIA QUERIES (A partir de 768px) */
+/* ======================================= */
+@media (min-width: 768px) {
+  /* 1. NAVEGAÇÃO EM LINHA */
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* CORREÇÃO LOGO DESKTOP */
+  .logo-link img {
+    margin: 0; /* Remove a centralização */
+  }
+
+  nav ul {
+    flex-direction: row; /* Links na horizontal */
+    padding-top: 0;
+    gap: 20px;
+  }
+
+  /* EFEITO HOVER: Links do Menu (Desktop) */
+  nav ul li a:hover {
+    transform: translateX(0) translateY(-3px); /* Deslocamento para cima */
+  }
+
+  .signup-button {
+    margin-top: 0;
+  }
+
+  /* 2. TIPOGRAFIA (Aumento) */
+  h1 {
+    font-size: 3.5rem; /* Aumenta o título principal */
+  }
+
+  /* 3. LAYOUT DE DUAS COLUNAS (HERO/MISSÃO) */
+  #missao {
+    text-align: left; /* Alinha o texto à esquerda */
+  }
+
+  #missao .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 40px;
+    align-items: center;
+  }
+
+  #missao p {
+    padding: 0; /* Remove o recuo lateral do mobile */
+  }
+
+  /* 4. LAYOUT DE TRÊS COLUNAS (PROJETOS) */
+  .projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 30px;
+  }
+
+  /* 5. FORMULÁRIO COM COLUNAS */
+  .form-group-inline {
+    display: flex;
+    gap: 20px;
+  }
+
+  .form-group-inline > div {
+    flex-grow: 1;
+  }
+
+  /* 6. RODAPÉ */
+  footer {
+    text-align: left;
+  }
+
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
